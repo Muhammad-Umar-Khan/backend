@@ -6,3 +6,4 @@ const textIn = fs.readFileSync("./input.txt", "utf-8");
 console.log(textIn02);
 console.log(textIn);
 // console.log("Testing asyn and sync");
+console.log("Consistency!");
