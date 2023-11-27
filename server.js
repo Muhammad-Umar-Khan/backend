@@ -6,4 +6,6 @@ const server = http.createServer((req, res) => {
 server.listen(3001, () => {
   console.log("Listening on port 3000");
 });
+
 //implementing different actions for different URLs is routing;
+//http header is piece if information about the response we are sending back;
