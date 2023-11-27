@@ -1,6 +1,13 @@
 const http = require("http"); //this module gives you networking capabilities;
 const server = http.createServer((req, res) => {
-  res.end("This is my first server!!");
+  const pathName = req.url;
+  if (pathName === "/" || pathName === "/product") {
+    res.end("Product page");
+  } else if (pathName === "/service") {
+    res.end("Service page");
+  } else {
+    res.end("Page not found");
+  }
 });
 
 server.listen(3001, () => {
