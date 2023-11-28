@@ -5,6 +5,9 @@ const server = http.createServer((req, res) => {
     res.end("Product page");
   } else if (pathName === "/service") {
     res.end("Service page");
+  } else if (pathName === "/api") {
+    const fruits = require(`./dev-data/data.json`);
+    res.end(JSON.parse(fruits));
   } else {
     res.writeHead(404, {
       "Content-type": "text/html",
