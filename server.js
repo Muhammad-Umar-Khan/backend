@@ -6,8 +6,10 @@ const server = http.createServer((req, res) => {
   } else if (pathName === "/service") {
     res.end("Service page");
   } else {
-    res.writeHead(404);
-    res.end("Page not found");
+    res.writeHead(404, {
+      "Content-type": "text/html",
+    });
+    res.end("<h1>Page not found</h1>");
   }
 });
 
