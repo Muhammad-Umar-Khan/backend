@@ -1,4 +1,5 @@
 const http = require("http"); //this module gives you networking capabilities;
+const fs = require("fs");
 const server = http.createServer((req, res) => {
   const pathName = req.url;
   if (pathName === "/" || pathName === "/product") {
@@ -6,8 +7,14 @@ const server = http.createServer((req, res) => {
   } else if (pathName === "/service") {
     res.end("Service page");
   } else if (pathName === "/api") {
-    const fruits = require(`./dev-data/data.json`);
-    res.end(JSON.parse(fruits));
+    fs.readFile(`./dev-data/data.json`, "utf-8", (err, data) => {
+      const response = JSON.parse(data);
+      console.log(response);
+      res.writeHead(200, {
+        "Content-type": "application/json",
+      });
+      res.end(data);
+    });
   } else {
     res.writeHead(404, {
       "Content-type": "text/html",
