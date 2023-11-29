@@ -36,3 +36,4 @@ server.listen(3001, () => {
 //implementing different actions for different URLs is routing;
 //http header is piece if information about the response we are sending back;
 //http headers passes addiotional contxt and metadata about the request or response;
+//JSON.stringify(object, (key, value) => {});
