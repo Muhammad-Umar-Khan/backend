@@ -9,7 +9,6 @@ const server = http.createServer((req, res) => {
   } else if (pathName === "/api") {
     fs.readFile(`./dev-data/data.json`, "utf-8", (err, data) => {
       const response = JSON.parse(data);
-      console.log(response);
       res.writeHead(200, {
         "Content-type": "application/json",
       });
