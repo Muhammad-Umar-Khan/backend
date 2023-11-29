@@ -8,7 +8,14 @@ const server = http.createServer((req, res) => {
     res.end("Service page");
   } else if (pathName === "/api") {
     fs.readFile(`./dev-data/data.json`, "utf-8", (err, data) => {
-      const response = JSON.parse(data); //JSON.parse() takes in a json string and converts it into a JS Object;
+      const response = JSON.parse(data, (key, value) => {
+        if (typeof value == "string") {
+          return value.toUpperCase();
+        }
+        return value;
+      });
+      console.log(response);
+      //JSON.parse() takes in a json string and converts it into a JS Object;
       res.writeHead(200, {
         "Content-type": "application/json",
       });
