@@ -1,5 +1,6 @@
 const http = require("http"); //this module gives you networking capabilities;
 const fs = require("fs");
+const jsonData = fs.readFileSync("./dev-data/data.json", "utf-8");
 const server = http.createServer((req, res) => {
   const pathName = req.url;
   if (pathName === "/" || pathName === "/product") {
@@ -7,20 +8,24 @@ const server = http.createServer((req, res) => {
   } else if (pathName === "/service") {
     res.end("Service page");
   } else if (pathName === "/api") {
-    fs.readFile(`./dev-data/data.json`, "utf-8", (err, data) => {
-      const response = JSON.parse(data, (key, value) => {
-        if (typeof value == "string") {
-          return value.toUpperCase();
-        }
-        return value;
-      });
-      console.log(response);
-      //JSON.parse() takes in a json string and converts it into a JS Object;
-      res.writeHead(200, {
-        "Content-type": "application/json",
-      });
-      res.end(data);
+    // fs.readFile(`./dev-data/data.json`, "utf-8", (err, data) => {
+    //   const response = JSON.parse(data, (key, value) => {
+    //     if (typeof value == "string") {
+    //       return value.toUpperCase();
+    //     }
+    //     return value;
+    //   });
+    //   console.log(response);
+    //   //JSON.parse() takes in a json string and converts it into a JS Object;
+    //   res.writeHead(200, {
+    //     "Content-type": "application/json",
+    //   });
+    //   res.end(data);
+    // });
+    res.writeHead(200, {
+      "Content-type": "application/json",
     });
+    res.end(jsonData);
   } else {
     res.writeHead(404, {
       "Content-type": "text/html",
