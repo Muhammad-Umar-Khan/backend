@@ -15,7 +15,6 @@ const server = http.createServer((req, res) => {
     //     }
     //     return value;
     //   });
-    //   console.log(response);
     //   //JSON.parse() takes in a json string and converts it into a JS Object;
     //   res.writeHead(200, {
     //     "Content-type": "application/json",
