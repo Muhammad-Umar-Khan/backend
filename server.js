@@ -4,6 +4,10 @@ const tempOverview = fs.readFileSync(
   `${__dirname}/templates/template-overview.html`,
   "utf-8"
 );
+const tempCard = fs.readFileSync(
+  `${__dirname}/templates/template-card.html`,
+  "utf-8"
+);
 const jsonData = fs.readFileSync("./dev-data/data.json", "utf-8");
 const server = http.createServer((req, res) => {
   const pathName = req.url;
