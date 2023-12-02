@@ -1,7 +1,8 @@
 const http = require("http"); //this module gives you networking capabilities;
 const fs = require("fs");
 const tempOverview = fs.readFileSync(
-  `${__dirname}/templates/template-overview.html`
+  `${__dirname}/templates/template-overview.html`,
+  "utf-8"
 );
 const jsonData = fs.readFileSync("./dev-data/data.json", "utf-8");
 const server = http.createServer((req, res) => {
