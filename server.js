@@ -1,5 +1,10 @@
 const http = require("http"); //this module gives you networking capabilities;
 const fs = require("fs");
+
+const replaceTemplate = (temp, ele) => {
+  let output = temp.replace(/{%PRODUCTNAME%}/g, ele.productName);
+  output = output.replace(/{%image%}/g, ele.image);
+};
 const tempOverview = fs.readFileSync(
   `${__dirname}/templates/template-overview.html`,
   "utf-8"
@@ -16,6 +21,7 @@ const jsonData = fs.readFileSync("./dev-data/data.json", "utf-8");
 const server = http.createServer((req, res) => {
   const pathName = req.url;
   if (pathName === "/" || pathName === "/overview") {
+    const cardHtml = jsonData.map((ele) => replaceTemplate(tempCard, ele));
     res.writeHead(200, {
       "Content-type": "text/html",
     });
