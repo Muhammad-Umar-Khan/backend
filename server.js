@@ -10,6 +10,7 @@ const replaceTemplate = (temp, ele) => {
   output = output.replace(/{%QUANTITY%}/g, ele.quantity);
   output = output.replace(/{%DESCRIPTION%}/g, ele.description);
   output = output.replace(/{%ID%}/g, ele.id);
+  if (!ele.organic) output = output.replace(/{%NOT_ORGANIC%}/g, "Not-Organic");
 };
 const tempOverview = fs.readFileSync(
   `${__dirname}/templates/template-overview.html`,
