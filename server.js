@@ -24,7 +24,8 @@ const tempProduct = fs.readFileSync(
   `${__dirname}/templates/template-product.html`,
   "utf-8"
 );
-const jsonData = fs.readFileSync("./dev-data/data.json", "utf-8");
+const readData = fs.readFileSync("./dev-data/data.json", "utf-8");
+const jsonData = JSON.parse(readData);
 const server = http.createServer((req, res) => {
   const pathName = req.url;
   if (pathName === "/" || pathName === "/overview") {
