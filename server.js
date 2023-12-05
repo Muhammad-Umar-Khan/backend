@@ -3,7 +3,11 @@ const fs = require("fs");
 
 const replaceTemplate = (temp, ele) => {
   let output = temp.replace(/{%PRODUCTNAME%}/g, ele.productName);
-  output = output.replace(/{%image%}/g, ele.image);
+  output = output.replace(/{%IMAGE%}/g, ele.image);
+  output = output.replace(/{%PRICE%}/g, ele.price);
+  output = output.replace(/{%FROM%}/g, ele.from);
+  output = output.replace(/{%NUTRIENTS%}/g, ele.nutrients);
+  output = output.replace(/{%QUANTITY%}/g, ele.quantity);
 };
 const tempOverview = fs.readFileSync(
   `${__dirname}/templates/template-overview.html`,
