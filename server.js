@@ -11,6 +11,7 @@ const replaceTemplate = (temp, ele) => {
   output = output.replace(/{%DESCRIPTION%}/g, ele.description);
   output = output.replace(/{%ID%}/g, ele.id);
   if (!ele.organic) output = output.replace(/{%NOT_ORGANIC%}/g, "Not-Organic");
+  return output;
 };
 const tempOverview = fs.readFileSync(
   `${__dirname}/templates/template-overview.html`,
@@ -33,7 +34,9 @@ const server = http.createServer((req, res) => {
     res.writeHead(200, {
       "Content-type": "text/html",
     });
-    res.end(tempOverview);
+    console.log(cardHtml);
+    const ouptput = tempOverview.replace("{%PRODUCT_CARDS%}", cardHtml);
+    res.end(ouptput);
   } else if (pathName === "/product") {
     res.end("Product page");
   } else if (pathName === "/service") {
