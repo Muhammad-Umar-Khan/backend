@@ -8,6 +8,8 @@ const replaceTemplate = (temp, ele) => {
   output = output.replace(/{%FROM%}/g, ele.from);
   output = output.replace(/{%NUTRIENTS%}/g, ele.nutrients);
   output = output.replace(/{%QUANTITY%}/g, ele.quantity);
+  output = output.replace(/{%DESCRIPTION%}/g, ele.description);
+  output = output.replace(/{%ID%}/g, ele.id);
 };
 const tempOverview = fs.readFileSync(
   `${__dirname}/templates/template-overview.html`,
