@@ -1,5 +1,5 @@
 const http = require("http"); //this module gives you networking capabilities;
-const fs = require("fs");
+const fs = require("fs"); //file system module;
 
 const replaceTemplate = (temp, ele) => {
   let output = temp.replace(/{%PRODUCTNAME%}/g, ele.productName);
