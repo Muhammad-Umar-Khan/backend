@@ -1,19 +1,8 @@
 const http = require("http"); //this module gives you networking capabilities;
 const fs = require("fs"); //file system module;
 const url = require("url");
+const replaceTemplate = require("./modules/replaceTemplate");
 
-const replaceTemplate = (temp, ele) => {
-  let output = temp.replace(/{%PRODUCTNAME%}/g, ele.productName);
-  output = output.replace(/{%IMAGE%}/g, ele.image);
-  output = output.replace(/{%PRICE%}/g, ele.price);
-  output = output.replace(/{%FROM%}/g, ele.from);
-  output = output.replace(/{%NUTRIENTS%}/g, ele.nutrients);
-  output = output.replace(/{%QUANTITY%}/g, ele.quantity);
-  output = output.replace(/{%DESCRIPTION%}/g, ele.description);
-  output = output.replace(/{%ID%}/g, ele.id);
-  if (!ele.organic) output = output.replace(/{%NOT_ORGANIC%}/g, "Not-Organic");
-  return output;
-};
 const tempOverview = fs.readFileSync(
   `${__dirname}/templates/template-overview.html`,
   "utf-8"
