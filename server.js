@@ -41,7 +41,12 @@ const server = http.createServer((req, res) => {
     const ouptput = tempOverview.replace("{%PRODUCT_CARDS%}", cardHtml);
     res.end(ouptput);
   } else if (pathname === "/product") {
-    res.end("Product page");
+    res.writeHead(200, {
+      "Content-type": "text/html",
+    });
+    const product = jsonData[query.id];
+    const outPut = replaceTemplate(tempProduct, product);
+    res.end(outPut);
   } else if (pathname === "/service") {
     res.end("Service page");
   } else if (pathname === "/api") {
