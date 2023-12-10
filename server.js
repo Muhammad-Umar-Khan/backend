@@ -34,7 +34,6 @@ const server = http.createServer((req, res) => {
     res.writeHead(200, {
       "Content-type": "text/html",
     });
-    console.log(cardHtml);
     const ouptput = tempOverview.replace("{%PRODUCT_CARDS%}", cardHtml);
     res.end(ouptput);
   } else if (pathName === "/product") {
@@ -45,7 +44,7 @@ const server = http.createServer((req, res) => {
     res.writeHead(200, {
       "Content-type": "application/json",
     });
-    res.end(jsonData);
+    res.end(JSON.stringify(jsonData));
   } else {
     res.writeHead(404, {
       "Content-type": "text/html",
