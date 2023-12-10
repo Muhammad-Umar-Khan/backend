@@ -1,5 +1,6 @@
 const http = require("http"); //this module gives you networking capabilities;
 const fs = require("fs"); //file system module;
+const url = require("url");
 
 const replaceTemplate = (temp, ele) => {
   let output = temp.replace(/{%PRODUCTNAME%}/g, ele.productName);
@@ -29,6 +30,8 @@ const readData = fs.readFileSync("./dev-data/data.json", "utf-8");
 const jsonData = JSON.parse(readData);
 const server = http.createServer((req, res) => {
   const pathName = req.url;
+  const { query } = url.parse(req.url, true);
+  console.log(query.id);
   if (pathName === "/" || pathName === "/overview") {
     const cardHtml = jsonData.map((ele) => replaceTemplate(tempCard, ele));
     res.writeHead(200, {
